@@ -2,14 +2,18 @@ import XCTest
 @testable import SwiftLocator
 
 final class SwiftLocatorTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(SwiftLocator().text, "Hello, World!")
+    
+    func testRegisterSingletonWithString() {
+        let get = Locator.main
+        
+        let testString = "Hello, World!"
+        get.registerSingleton(testString)
+        
+        let string: String = get()
+        XCTAssertEqual(string, testString)
     }
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testRegisterSingletonWithString", testRegisterSingletonWithString),
     ]
 }
